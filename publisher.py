@@ -17,9 +17,9 @@ if __name__ == "__main__":
     logger.info(f"Creating client: {client_id}")
     client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2, client_id=client_id, protocol=mqtt.MQTTv311, transport="tcp")
 
+    # on local standup as-is, there's no auth... this is just showing an example of how to set it
     username = "test"
     password = "test123"
-
     client.username_pw_set(username=username, password=password)
 
     mqtt_host = "localhost"
