@@ -1,0 +1,20 @@
+name: mqtt-infrastructure
+services:
+  emqx:
+    image: emqx/emqx:5.8.6
+    container_name: emqx
+    ports:
+      - "1883:1883"     # MQTT - non tls
+      - "8883:8883"     # MQTT - tls
+      - "18083:18083"   # Dashboard
+    networks:
+      - mqtt-net
+
+# create on docker-compose up if not exists
+networks:
+  mqtt-net:
+    external: false
+    name: mqtt-net
+
+volumes:
+  redis-data:
